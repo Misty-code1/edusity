@@ -1,7 +1,8 @@
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
-import { useEffect } from "react";
+import menu_icon from "../../assets/menu-icon.png";
+import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
@@ -13,20 +14,59 @@ const Navbar = () => {
     });
   }, []);
 
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+  const toggleMenu = () => {
+    mobileMenu ? setMobileMenu(false) : setMobileMenu(true);
+  };
+
   return (
-    <nav className={`container ${sticky ? 'dark-nav' : null} `}>
+    <nav className={`container ${sticky ? "dark-nav" : null} `}>
       <img src={logo} alt="logo" className="logo" />
-      <ul>
-        <li>Home</li>
-        <li>Program</li>
-        <li>About us</li>
-        <li>Campus</li>
-        <li>Testimonials</li>
+      <ul className={mobileMenu? '' : 'hide-mobile-menu'}>
         <li>
-          {" "}
-          <button className="btn">Contact us</button>
+          <Link to="hero" smooth={true} offset={0} duration={500}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="program" smooth={true} offset={-260} duration={500}>
+            Programs
+          </Link>
+        </li>
+        <li>
+          <Link to="about" smooth={true} offset={-150} duration={500}>
+            About us
+          </Link>
+        </li>
+        <li>
+          <Link to="campus" smooth={true} offset={-260} duration={500}>
+            Campus
+          </Link>
+        </li>
+        <li>
+          <Link to="testimonials" smooth={true} offset={-260} duration={500}>
+            Testimonials
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="contact"
+            smooth={true}
+            offset={-260}
+            duration={500}
+            className="btn"
+          >
+            Contact us
+          </Link>
         </li>
       </ul>
+      <img
+        src={menu_icon}
+        alt="menu icon"
+        className="menu-icon hide-mobile-menuu"
+        onClick={toggleMenu}
+      />
     </nav>
   );
 };

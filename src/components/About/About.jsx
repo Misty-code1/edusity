@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import "./About.css";
 import about_img from "../../assets/about.png";
 import play_icon from "../../assets/play-icon.png";
 
-const About = () => {
+const About = ({setPlayState}) => {
   return (
     <div className="about">
       <div className="about-left">
         <img src={about_img} alt="about img" className="about-img" />
-        <img src={play_icon} alt="about img" className="play-icon" />
+        <img src={play_icon} alt="about img" className="play-icon" onClick={()=>{setPlayState(true)}}/>
       </div>
 
       <div className="about-right">
